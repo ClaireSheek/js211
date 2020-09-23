@@ -1,11 +1,8 @@
-// **THIS IS INCREDIBLY IMPORTANT THAT YOU DO BOTH SECTIONS!!! You will be doing only front-end work in 421 and you need to brush up on your HTML elements**
-
-
 // ***************************
 //          PART ONE
 // ***************************
 // Write a JavaScript program to display the current day and time, start with:
-console.log(new Date)
+console.log('#1: the date is:', new Date)
 
 const displayDate = () => {
   const currentDate = new Date()
@@ -15,11 +12,14 @@ const displayDate = () => {
  
 
 // Write a JavaScript program to convert a number to a string.
-
+const userNumber = 7
+const convertToString = userNumber.toString();
+console.log('#2 converted number to string', convertToString)
 
 
 // Write a JavaScript program to convert a string to the number.
-
+const convertToNum = parseInt(`7`);
+console.log('#3 converted string to number:', convertToNum)
 
 
 // Write a JavaScript program that takes in different datatypes and prints out whether they are a:
@@ -29,22 +29,47 @@ const displayDate = () => {
   // * Number
   // * NaN
   // * String
-  
+let myBool = false;
+let myNull = null;
+let myNum = 3;
+let myNaN = NaN;
+let myString = `Hello`;
+let myUndefined
 
+const isTypeOf = (data) => {
+  return console.log(typeof data);
+}
+
+isTypeOf(myBool);
+isTypeOf(myNull);
+isTypeOf(myNum);
+isTypeOf(myNaN);
+isTypeOf(myString);
+isTypeOf(myUndefined);
   
 // Write a JavaScript program that adds 2 numbers together.
+let firstNumber = 9;
+let secondNumber = 3;
 
+const addTwoNum = (num1, num2) => {
+ return `${num1} + ${num2} =  num1 + num2`
+}
 
+addTwoNum(firstNumber, secondNumber)
 
 // Write a JavaScript program that runs only when 2 things are true.
-
-
-
 // Write a JavaScript program that runs when 1 of 2 things are true.
-
-
-
 // Write a JavaScript program that runs when both things are not true.  
+const isItTrue = (arg1, arg2) => {
+  if (arg1 && arg1) {
+    return "Both are TRUE"
+  } else if (arg1 || arg2) {
+    return "One of these is TRUE"
+  } else 
+    return "Neither is TRUE"
+}
+console.log(isItTrue(0, 2))
+
 
 // ***************************
 //         PART TWO
