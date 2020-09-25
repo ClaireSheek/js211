@@ -26,12 +26,14 @@ const rockPaperScissors = (hand1, hand2) => {
     (hand1 ==="paper" && hand2 === "rock")) 
     {
       return "Hand one wins!"
-    } else (
+    } else if (
       (hand1 === "rock" && hand2 === "paper") ||
       (hand1 === "scissors" && hand2 === "rock") ||
       (hand1 ==="paper" && hand2 === "scissors")) 
       {
         return "Hand two wins!"
+      } else {
+        return "One of you cheated! Try again you jerk."
       }
     }  
   // Use the unit test to see what is expected
