@@ -69,22 +69,25 @@ const diagonalWin = () => {
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
   if (horizontalWin || verticalWin || diagonalWin){
-  } else {
-    return "Cat's Game"
-  }
+  } return true
 }
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
-
-
-  // then check for a win
-
-  //if no win, switch players
+if (board[row][column] == " "){
+  board[row][column] = playerTurn;
   if (playerTurn == "X"){
     playerTurn = "O"
   } else {
     playerTurn = "X"
+  }
+} else {
+  console.log("** That space is taken, try again **");
+}
+
+  // then check for a win
+  if (checkForWin() == true){
+    console.log("Congrats! " + playerTurn + "'s win!")
   }
 }
 
