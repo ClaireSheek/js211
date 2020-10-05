@@ -31,6 +31,7 @@ const pigLatin = (word) => {
       break;
       }
     }
+    //split, re-order and add "ay" to the end
     return word.slice(vowelIndex) + word.slice(0, vowelIndex) + "ay"
   }
 
