@@ -33,7 +33,7 @@ const rockPaperScissors = (hand1, hand2) => {
       {
         return "Hand two wins!"
       } else {
-        return "One of you cheated! Try again you jerk."
+        return "Please choose 'rock', 'paper' or 'scissors'"
       }
     }  
   // Use the unit test to see what is expected
@@ -71,6 +71,13 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+    });
+     // My Tests
+    it('should detect an invalid input', () => {
+      assert.equal(rockPaperScissors('apple', 'stick'), "Please choose 'rock', 'paper' or 'scissors'");
+    });
+    it('should detect That 70"s show reference', () => {
+      assert.equal(rockPaperScissors('Cockroach', 'Nuclear Bomb'), "Nice try, This isn't That 70's Show!");
     });
   });
 } else {
