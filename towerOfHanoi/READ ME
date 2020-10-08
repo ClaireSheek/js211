@@ -1,0 +1,8 @@
+Towers Of Hanoi Code Plan
+
+Move Function:
+Should take in the starting and ending stacks and move the top piece from one to the other.
+  -remove the last index of the starting array
+  -re-assign it to end of the ending array
+
+
