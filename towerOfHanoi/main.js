@@ -57,7 +57,7 @@ const isLegal = (startStack, endStack) => {
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-  let checkStackB = stacks.b.toString()
+  let checkStackB = stacks.b.toString() 
   let checkStackC = stacks.c.toString()
 
  if(checkStackB == '4,3,2,1' || checkStackC == '4,3,2,1'){ 
