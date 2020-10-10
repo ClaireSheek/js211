@@ -34,10 +34,9 @@ const printStacks = () => {
 
 const movePiece = (startStack, endStack) => {
   let popPiece = startStack.pop();    //removes the last item in the startStack array
-  console.log("The moving piece is: ", popPiece);
-  let newStack = endStack.push(popPiece);  // and places it onto the endStack
-  newStack = endStack
-  console.log(endStack)
+  console.log("The moving piece is: ", popPiece)
+  endStack.push(popPiece);  // and places it onto the endStack
+
 
 }
 
