@@ -33,31 +33,53 @@ const printStacks = () => {
 //This function should take in the starting and ending stacks and move the top piece from one to the other.
 
 const movePiece = (startStack, endStack) => {
-  // 
-  let popPiece = startStack.pop();
-  console.log("The moving piece is: ", popPiece)
-  let reassignPiece = endStack.push(popPiece)
+  let popPiece = startStack.pop();    //removes the last item in the startStack array
+  console.log("The moving piece is: ", popPiece);
+  let newStack = endStack.push(popPiece);  // and places it onto the endStack
+  newStack = endStack
   console.log(endStack)
 
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
 const isLegal = (startStack, endStack) => {
-  // Your code here
+  let movingPiece = startStack[startStack.length-1];  // Defines what block will be moved
+  let attemptedPlacement = endStack[endStack.length-1]; // Defines what block it's attempting to be placed on
+ if (attemptedPlacement === undefined || movingPiece < attemptedPlacement){   // Check if the stack is empty, and compares the size of the two blocks
+    console.log("Legal: ", movingPiece, "can be placed on ", attemptedPlacement)
+   return true;
+ } else {
+   console.log("Illegal: ", movingPiece, "can't be placed on", attemptedPlacement)
+      return false;
+ }
 
 }
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-  // Your code here
+  let checkStackB = stacks.b.toString()
+  let checkStackC = stacks.c.toString()
+
+ if(checkStackB == '4,3,2,1' || checkStackC == '4,3,2,1'){ 
+   console.log("Winner winner, chicken dinner!")
+   return true
+ } else {
+   return false
+ }
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
-  // Your code here
-
-}
+  if (isLegal(startStack, endStack) === true){
+    movePiece(startStack, endStack)
+  } else{
+    console.log("try again")
+  }
+  if (checkForWin() === true) {
+    console.log("We have a winner!")
+  }
+ } 
 
 const getPrompt = () => {
   printStacks();
