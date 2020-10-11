@@ -34,18 +34,21 @@ const printStacks = () => {
 
 const movePiece = (startStack, endStack) => {
   let popPiece = stacks[startStack].pop();    //removes the last item in the startStack array
-  console.log("The moving piece is: ", popPiece)
+  // checks to make sure the correct piece was moving: console.log("The moving piece is: ", popPiece) 
   stacks[endStack].push(popPiece);  // and places it onto the endStack
 }
 
-// Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
+// Before you move, should you check if the move is actually allowed? Should 3 be able to be stacked on 2
 const isLegal = (startStack, endStack) => {
-  let movingPiece = stacks[startStack].length-1;  // Defines what block will be moved
-  let attemptedPlacement = stacks[endStack].length-1; // Defines what block it's attempting to be placed on
- if (attemptedPlacement === undefined || movingPiece < attemptedPlacement){   // Check if the stack is empty, and compares the size of the two blocks
-    console.log("Legal: ", movingPiece, "can be placed on ", attemptedPlacement)
+  let startingIndex = stacks[startStack].length-1;  // Finds the index of what block will be moved
+  let endingIndex = stacks[endStack].length-1; // Finds the index of what block it's attempting to be placed on
+  let movingPiece = stacks[startStack][startingIndex]; // Finds the numeric value at the defined index of startStart
+  let attemptedPlacement = stacks[endStack][endingIndex]; // Finds the numeric value at the defined index of endArray
+ if (attemptedPlacement === undefined || movingPiece < attemptedPlacement){   // Check if the stack is empty, and compares the values of the two numbers (aka: size of the two blocks)
+  //if the stack is empty, or the movingPiece is less than the piece we're attempting to place it on: return true
+    console.log("Legal: ", movingPiece, "can be placed on ", attemptedPlacement) 
    return true;
- } else {
+ } else {  // otherwise return false.
    console.log("Illegal: ", movingPiece, "can't be placed on", attemptedPlacement)
       return false;
  }
@@ -54,27 +57,25 @@ const isLegal = (startStack, endStack) => {
 
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
-  let checkStackB = stacks.b.toString() 
-  let checkStackC = stacks.c.toString()
-
- if(checkStackB == '4,3,2,1' || checkStackC == '4,3,2,1'){ 
-   console.log("Winner winner, chicken dinner!")
-   return true
- } else {
-   return false
+  let checkStackB = stacks.b.toString() //turns stack b into a string
+  let checkStackC = stacks.c.toString() // turns stack a into a string
+ if(checkStackB == '4,3,2,1' || checkStackC == '4,3,2,1'){   // checks stack a and b against the string '4,3,2,1' - if either are equal, return true, we have a winner!
+   return true;
+ } else {  // otherwise return false. No win.
+   return false ;
  }
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
-  if (isLegal(startStack, endStack) === true){
-    movePiece(startStack, endStack)
+  if (isLegal(startStack, endStack) === true){ // first check to see if they move is legal by calling our isLegal function
+    movePiece(startStack, endStack) // if true, run movePiece
   } else{
-    console.log("try again")
+    console.log("Sorry, you can't move that there, try again.") // if false, let the use know move is illegal.
   }
-  if (checkForWin() === true) {
-    console.log("We have a winner!")
+  if (checkForWin() === true) { //check for a win with checkForWin function!
+    console.log("Winner winner, chicken dinner!") //if true, tell the player that they won!
   }
  } 
 
