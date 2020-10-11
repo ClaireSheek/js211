@@ -33,17 +33,15 @@ const printStacks = () => {
 //This function should take in the starting and ending stacks and move the top piece from one to the other.
 
 const movePiece = (startStack, endStack) => {
-  let popPiece = startStack.pop();    //removes the last item in the startStack array
+  let popPiece = stacks[startStack].pop();    //removes the last item in the startStack array
   console.log("The moving piece is: ", popPiece)
-  endStack.push(popPiece);  // and places it onto the endStack
-
-
+  stacks[endStack].push(popPiece);  // and places it onto the endStack
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
 const isLegal = (startStack, endStack) => {
-  let movingPiece = startStack[startStack.length-1];  // Defines what block will be moved
-  let attemptedPlacement = endStack[endStack.length-1]; // Defines what block it's attempting to be placed on
+  let movingPiece = stacks[startStack].length-1;  // Defines what block will be moved
+  let attemptedPlacement = stacks[endStack].length-1; // Defines what block it's attempting to be placed on
  if (attemptedPlacement === undefined || movingPiece < attemptedPlacement){   // Check if the stack is empty, and compares the size of the two blocks
     console.log("Legal: ", movingPiece, "can be placed on ", attemptedPlacement)
    return true;
