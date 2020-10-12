@@ -3,7 +3,7 @@ body {
   height: 100%;
   max-width: 1000px;
   margin: 50px auto;
-  background-color: rgb(109, 5, 48);
+  background-color: rgb(231, 169, 195);
   color: whitesmoke;
   font-family: 'Oswald', sans-serif;
 }
@@ -23,12 +23,13 @@ body {
 
 
 main {
+  background-color: rgb(145, 62, 96);
   display: flex;
-  margin: auto;
+  margin: 100px auto;
   flex-direction: column;
   padding: 20px;
   border: 2px solid ;
-  min-width: 600px;
+  width: 55vw;
 }
 
 h2 {
