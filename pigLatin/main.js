@@ -31,6 +31,7 @@ const translateArray = (word, index, words) => {
 }
 
 words.forEach(translateArray);
+
 words = words.toString();
 let finalTranslation = words.replace(",", " ");
 document.getElementById('translatedWord').innerText = finalTranslation;
