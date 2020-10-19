@@ -55,7 +55,7 @@ const isLegal = (startStack, endStack) => {
 
 }
 
-// What is a win in Towers of Hanoi? When should this function run?
+// Check to see if an stack besides A has all 4 pieces in the correct order.
 const checkForWin = () => {
   let checkStackB = stacks.b.toString() //turns stack b into a string
   let checkStackC = stacks.c.toString() // turns stack a into a string
