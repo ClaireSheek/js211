@@ -10,6 +10,7 @@ const rl = readline.createInterface({
 let board = [];
 let solution = '';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+let turnCounter = 0
 
 const printBoard = () =>  {
   for (let i = 0; i < board.length; i++) {
@@ -28,13 +29,61 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const generateHint = () =>  {
-  // your code here
+const generateHint = (guess) =>  {
+  // create a variable to hold hints
+  let halfCorrect  = 0 //right letter, wrong spot
+  let correct = 0 //right letter, right spot
+
+  //split the 'solution' and 'guess' strings into arrays so we can compare them
+  let solutionArray = solution.split('')
+  let guessArray = guess.split('')
+  // console.log("solution: ", solutionArray)
+  // console.log("guess: ", guessArray)
+
+
+  for (let i = 0; i < guessArray.length; i++) {   
+    let indexInSolution = solutionArray.indexOf(guessArray[i]); //check to see if the letter of each iteration is in the solutionArray
+    console.log(indexInSolution)
+    if (guessArray[i] == solutionArray[i]){  //search for 'correct' guess
+      correct = correct + 1; // adjust hint
+      solutionArray[indexInSolution] = null; //so no duplicates can be compared.
+
+    } else if (indexInSolution > -1){  //search for 'halfCorrect' guess
+      halfCorrect = halfCorrect + 1; //adjust hint
+      solutionArray[indexInSolution] = null; //so no duplicates can be compared.
+      console.log(solutionArray)
+    }
+  }
+
+
+  //return hint
+  let hint = halfCorrect + "-" + correct
+  // console.log(hint)
+  return hint
+
 }
 
 const mastermind = (guess) => {
   solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
+
+
+  if (guess === solution){  //correct guess equals a win
+    console.log('you guessed it!')
+    return "You guessed it!"
+  } else if (turnCounter == 10) {  //ends game after ten turns
+    console.log("You ran out of turns!")
+    board = [] //resets the board
+    console.log("The solution was: ", solution)
+    return
+  } else{ //pushes this round's guess to the board and raises the turn tracker.
+    turnCounter = turnCounter + 1
+    board.push(`Guess #${turnCounter}: ${guess} | Hint: ${generateHint(guess)}`)
+
+  }
+
+  console.log("You have ", 10-turnCounter, " more guesses.")
+
 }
 
 
