@@ -64,7 +64,7 @@ const generateHint = (guess) =>  {
 }
 
 const mastermind = (guess) => {
-  // solution = 'abcd'; // Comment this out to generate a random solution
+  solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
 
 
@@ -75,11 +75,15 @@ const mastermind = (guess) => {
     console.log("Play again?")
     generateSolution(); //restart game
     getPrompt();
+    return "You guessed it!"
   
   } else if (turnCounter == 9){  //ends game after ten turns
     board = [] //resets the board
+    turnCounter = 0 //resets turn counter
     console.log("You ran out of turns!\nThe solution was: ", solution)
-    return "You ran out of turns!"
+    generateSolution(); //restart game
+    getPrompt();
+    return "Sorry, try again"
 
   } else{ //pushes this round's guess to the board and raises the turn counter.
     turnCounter = turnCounter + 1
