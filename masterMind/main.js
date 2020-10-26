@@ -41,9 +41,9 @@ const generateHint = (guess) =>  {
   // console.log("guess: ", guessArray)
 
 
-  for (let i = 0; i < guessArray.length; i++) {   
+  for (let i = 0; i < solutionArray.length; i++) {   
     let indexInSolution = solutionArray.indexOf(guessArray[i]); //check to see if the letter of each iteration is in the solutionArray
-    console.log(indexInSolution)
+    // console.log(indexInSolution)
     if (guessArray[i] == solutionArray[i]){  //search for 'correct' guess
       correct = correct + 1; // adjust hint
       solutionArray[indexInSolution] = null; //so no duplicates can be compared.
@@ -51,7 +51,7 @@ const generateHint = (guess) =>  {
     } else if (indexInSolution > -1){  //search for 'halfCorrect' guess
       halfCorrect = halfCorrect + 1; //adjust hint
       solutionArray[indexInSolution] = null; //so no duplicates can be compared.
-      console.log(solutionArray)
+      // console.log(solutionArray)
     }
   }
 
@@ -64,26 +64,28 @@ const generateHint = (guess) =>  {
 }
 
 const mastermind = (guess) => {
-  solution = 'abcd'; // Comment this out to generate a random solution
+  // solution = 'abcd'; // Comment this out to generate a random solution
   // your code here
 
 
   if (guess === solution){  //correct guess equals a win
-    console.log('you guessed it!')
-    return "You guessed it!"
-  } else if (turnCounter == 10) {  //ends game after ten turns
-    console.log("You ran out of turns!")
     board = [] //resets the board
-    console.log("The solution was: ", solution)
-    return
-  } else{ //pushes this round's guess to the board and raises the turn tracker.
+    turnCounter = 0 //resets turn counter
+    console.log("You guessed it!")
+    console.log("Play again?")
+    generateSolution(); //restart game
+    getPrompt();
+  
+  } else if (turnCounter == 9){  //ends game after ten turns
+    board = [] //resets the board
+    console.log("You ran out of turns!\nThe solution was: ", solution)
+    return "You ran out of turns!"
+
+  } else{ //pushes this round's guess to the board and raises the turn counter.
     turnCounter = turnCounter + 1
     board.push(`Guess #${turnCounter}: ${guess} | Hint: ${generateHint(guess)}`)
-
+    console.log("You have ", 10-turnCounter, " more guesses.")
   }
-
-  console.log("You have ", 10-turnCounter, " more guesses.")
-
 }
 
 
