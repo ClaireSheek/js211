@@ -24,4 +24,4 @@ let people = data.results;
 // console.log(oldestUser.name.first + " " + oldestUser.name.last)
 
 console.log("hello world")
-console.log("hi user")
+console.log("hi")
