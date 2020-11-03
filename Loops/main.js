@@ -88,8 +88,8 @@ console.log(checkBirthdays)
 
 
 // 10. Use .filter() to filter the persons array and console.log only people that were born before Jan 1, 1990.
-let beforeDate = arrayOfPersons.filter(checkBirthdays)
-
+let beforeTheNinties = arrayOfPersons.filter(person => person.birthDate.substr(-4) < 1990)
+console.log(beforeTheNinties)
 
 // BONUS - Create a function that returns true if the date passed to it is >= 21 years in the past.
 // BONUS - .filter() out the people in the array who are younger than 21.
