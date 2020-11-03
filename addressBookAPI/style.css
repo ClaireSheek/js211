@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: auto;
+    color: white;
+    background-color: cadetblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+  }
+
+  #contacts{
+    display: grid;
+    grid-template-columns: auto auto;
+    /* flex-direction: row; */
+  }
+
+ .contactCard {
+    display: grid;
+    grid-template-areas:"photo name"
+                          "blank phone"
+                          "blank email";
+    max-width: 450px;
+    min-height: 150px;
+    padding: 15px;
+    margin: 20px;
+    background-color: grey;
+    text-align: center;
+    
+  }
+
+  span {
+    padding: 5px;
+  }
+
+  .name {
+    grid-area: name;
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  img {
+    grid-area: photo;
+  }
+  
+  .phone {
+    grid-area: phone;
+  }
+
+  .email{
+    grid-area: email;
+  }
+
+  .phone, .email {
+    display: none;
+  }
