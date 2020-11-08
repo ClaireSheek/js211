@@ -1,3 +1,4 @@
+
 const arrOfPeople = [
   {
     id: 2,
@@ -66,7 +67,7 @@ const redTeam = []
 //   }
 // }
 
-//This class will take in People from the arrOfPeople and create new dodgeBall Player objects that will be pushed to the array listOfPlayers.
+//This class will take in People from the arrOfPeople and create new dodgeBallPlayer objects that will be pushed to the array listOfPlayers.
 class dodgeBallPlayer {
   canThrowBall = true
   canDodgeBall = true
@@ -282,3 +283,13 @@ const unassign = (player) => {
     player.removeFromRed()
   }
 }
+
+
+//TESTS:
+// Would check that makePlayer() is working
+  //if listOfPlayers.length = 0, makePlayer(player) should change it to listOfPlayer.length = 1
+  //
+  //I'm not sure how I could check the DOM but I would check that the li for the player is being created and appended to the ul
+
+//Would check that the 
+
