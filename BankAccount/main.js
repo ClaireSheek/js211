@@ -59,7 +59,7 @@ class Transaction {
 }
 
 let sampleAccount = new BankAccount (0001, "Claire Sheek")
-console.log("sampleAccount is: ", sampleAccount)git
+console.log("sampleAccount is: ", sampleAccount)
 
 sampleAccount.deposit(200)
 console.log("Balance after $200 deposit: ", sampleAccount.balance())
