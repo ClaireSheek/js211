@@ -67,7 +67,7 @@ class person {
 }
 
 //This class will take in People from the arrOfPeople and create new dodgeBall Player objects that will be pushed to the array listOfPlayers.
-class dodgeBallPlayer {
+class Player {
   constructor(name){
     this.name = name
     this.team = null
@@ -84,36 +84,40 @@ class dodgeBallPlayer {
   }
 }
 
-// This class will add a dodgeBallPlayers into the blueTeam array, and assign a teamMascot and teamColor
-class blueTeammate extends dodgeBallPlayer{
+// This class will add a Players into the blueTeam array, and assign a teamMascot and teamColor
+class Teammate extends Player{
   constructor(name, team){
     super(name, team);
-    this.mascot = "Blue Jays";
-    this.teamColor = "Blue"
+    this.team = team
   }
 
-  addToTeam(){
-    this.team = "blue"
+  addToBlue(){
     blueTeam.push(this)
-    console.log(this)
-  }
-}
-
-// This class will add a dodgeBallPlayers into the blueTeam array, and assign a teamMascot and teamColor
-class redTeammate extends dodgeBallPlayer {
-  constructor(name){
-    super(name);
-    this.mascot = "Red Wings";
-    this.teamColor = "Red"
+    this.mascot = "Blue Jays";
   }
 
-  addToTeam(){
+  addToRed(){
     redTeam.push(this)
+    this.mascot = "Red Wings";
   }
+
 }
 
+// This class will add a Player into the blueTeam array, and assign a teamMascot and teamColor
+// class redTeammate extends Player {
+//   constructor(name){
+//     super(name);
+//     this.mascot = "Red Wings";
+//     this.teamColor = "Red"
+//   }
 
-//This function displays the list of available people (arrOfPeople) on the DOM as well as buttons to make them a dodgeBallPlayer
+//   addToTeam(){
+//     redTeam.push(this)
+//   }
+// }
+
+
+//This function displays the list of available people (arrOfPeople) on the DOM as well as buttons to make them a Player
 const listPeopleChoices = () => {
   const listElement = document.getElementById('people')
   arrOfPeople.map(person => {
@@ -127,10 +131,10 @@ const listPeopleChoices = () => {
   })
 }
 
-//this function should create a new dodgeBallPlayer object and push them to arrOfPeople when the "Make Player" button is pressed
+//this function should create a new Player object and push them to arrOfPeople when the "Make Player" button is pressed
 const makePlayer = (person) => {
   console.log(`${person.name} was clicked!`)
-  person.name = new dodgeBallPlayer(person.name)
+  person.name = new Player(person.name)
   person.name.addPlayer()
   listPlayerChoices()
 }
@@ -144,10 +148,10 @@ const listPlayerChoices = () => {
     //creates a button that adds the player to the team list and updates the team lists
     const blueButton = document.createElement("button")
     blueButton.innerHTML = "Blue Team"
-    blueButton.addEventListener('click', function() {assignToBlue(player)})
+    blueButton.addEventListener('click', function() {assignToBlue(player, blue)})
     const redButton = document.createElement("button")
     redButton.innerHTML = "Red Team"
-    redButton.addEventListener('click', function() {assignToRed(player.name)}, listRedTeam())
+    redButton.addEventListener('click', function() {assignToRed(player, red)}, listRedTeam())
 
     li.appendChild(document.createTextNode(player.name))
     li.appendChild(blueButton)    
@@ -162,18 +166,22 @@ const assignToBlue = (player) => {
   if(player.team == "red" || player.team == "blue"){
     return
     } else {
-    player.name = new blueTeammate(player.name)
-    player.name.addToTeam()
+    player = new Teammate(player.name, "blue")
+    player.addToBlue()
     listBlueTeam()
+    console.log(`${player.name}'s team is now: ${player.team}`)
+    console.log(blueTeam)
   }
 }
 
 //this function should assign the "redTeammate" class to the player which will push them to the redTeam array when the "Red Team" button is pressed
-const assignToRed = (name) => {
-  console.log(`${name} should be added to Red!`)
-  name = new redTeammate(name)
-  name.addToTeam()
+const assignToRed = (player) => {
+  console.log(`${player.name} should be added to Red!`)
+  player = new teammate(player, "red")
+  console.log(player)
+  player.addToRed()
   listRedTeam()
+  console.log(redTeam)
 }
 
 //This function displays the list of blueTeam players
@@ -183,11 +191,11 @@ const listBlueTeam = () => {
     blueTeam.map(player => {
     const li = document.createElement("li")
     // would remove players from team and add them back to the listOfPlayers
-    // const button = document.createElement("button")
-    // button.innerHTML = "Remove from team"
-    // button.addEventListener('click', function() {makePlayer(player.id)} )
-    // li.appendChild(button)
+    const button = document.createElement("button")
+    button.innerHTML = "Remove from team"
+    button.addEventListener('click', function() {makePlayer(player)} )
     li.appendChild(document.createTextNode(player.name))
+    li.appendChild(button)
     listElement.append(li)
   })
 }
@@ -199,10 +207,10 @@ const listRedTeam = () => {
     redTeam.map(player => {
     const li = document.createElement("li")
     // would remove players from team and add them back to the listOfPlayers
-    // const button = document.createElement("button")
-    // button.innerHTML = "Remove from team"
-    // button.addEventListener('click', function() {makePlayer(player.id)} )
-    // li.appendChild(button)
+    const button = document.createElement("button")
+    button.innerHTML = "Remove from team"
+    button.addEventListener('click', function() {makePlayer(player.id)} )
+    li.appendChild(button)
     li.appendChild(document.createTextNode(player.name))
     listElement.append(li)
   })
