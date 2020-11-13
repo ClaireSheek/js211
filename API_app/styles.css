@@ -4,15 +4,37 @@ body {
   margin: 100px;
   text-align: center;
 }
+#currentRecipe{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ingredientsList {
+  display: flex;
+  flex-direction: row;
+}
+
+.instructions{
+  max-width: 25vw;
+  justify-content: end;
+}
+
+.drinkTitle{
+  font-size: 1.5em;
+}
 
 #results {
+  margin: auto;
+  max-width: 50vw;
   list-style-type: none;
-  text-align: center;
+  justify-content: space-between;
 }
 
 #text{
-
+  font-size: 2.5vw;
 }
+
 
 ul ul li, ul p{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -23,4 +45,13 @@ ul ul li, ul p{
 
 div{
   padding: 10px;
+}
+
+button {
+  padding: 5px;
+  background-color: white;
+  margin-left: 15px;
+}
+button:hover {
+  background-color: rgb(170, 170, 170);
 }
