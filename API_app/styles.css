@@ -1,0 +1,26 @@
+body {
+  background-color: #FCFAF9;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 100px;
+  text-align: center;
+}
+
+#results {
+  list-style-type: none;
+  text-align: center;
+}
+
+#text{
+
+}
+
+ul ul li, ul p{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: black;
+  list-style-type: none;
+  font-size: .8em;
+}
+
+div{
+  padding: 10px;
+}

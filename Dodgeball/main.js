@@ -96,7 +96,7 @@ class dodgeBallPlayer {
 }
 
 // This class will add a dodgeBallPlayers into the blueTeam array, and assign a teamMascot and teamColor
-
+//**should only be one class "teammate" - that a team color is passed into */
 class blueTeammate{
   constructor(name, team, id){
     this.name = name;
@@ -105,7 +105,7 @@ class blueTeammate{
     this.mascot = "Blue Jays";
     this.teamColor = "Blue"
   }
-
+//*** should already be added to a team when they're madea a teammate*/
   addToBlue(){
     this.team = "blue"
     blueTeam.push(this)
@@ -125,17 +125,21 @@ class blueTeammate{
 
 // This class will add a dodgeBallPlayers into the blueTeam array, and assign a teamMascot and teamColor
 class redTeammate {
-  constructor(name, team, id){
+  constructor(name, team, id, color){
     this.name = name;
     this.team = team;
     this.id = id;
-    this.mascot = "Red Hawks";
-    this.teamColor = "Red"
+    this.color = color;
+    // this.mascot = "Red Hawks";
+    // this.teamColor = "Red"
   }
 
+
+//*** should already be added to a team when they're madea a teammate*/
   addToRed(){
     this.team = "red"
     redTeam.push(this)
+    this.mascot = "Red Hawks";
   }
   removeFromRed(){
     // remove from the player from the DOM
@@ -285,7 +289,7 @@ const unassign = (player) => {
 }
 
 
-//TESTS:
+//TESTS: **walk through of functionality from webpage perspective, starting at onLoad.
 // Would check that makePlayer() is working
   //if listOfPlayers.length = 0, makePlayer(player) should change it to listOfPlayer.length = 1
   //
